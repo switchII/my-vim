@@ -8,4 +8,4 @@
 #####3.在gvim中执行PluginInstall命令，安装完插件就差不多的了
 
 ## 显示一张自己的图
- ![image](https://github.com/switchII/my-vim/master/vim-screenshot.png)
+ ![image](https://github.com/switchII/my-vim/blob/master/vim-screenshot.png)
