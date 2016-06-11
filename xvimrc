@@ -1,0 +1,4 @@
+set number
+set hlsearch
+set guioptions=r
+set laststatus=0
