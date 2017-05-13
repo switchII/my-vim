@@ -109,61 +109,92 @@ endif
 " -----------------------------------------------------------------------------
 " 用于更方便的管理vim插件，具体用法参考 :h vundle 帮助
 " 安装方法为在终端输入如下命令
-" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 set nocompatible                                      "禁用 Vi 兼容模式
 filetype off                                          "禁用文件类型侦测
 
 if !g:iswindows
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
 else
-    set rtp+=$VIM/vimfiles/bundle/vundle/
-    call vundle#rc('$VIM/vimfiles/bundle/')
+    set rtp+=$VIM/vimfiles/bundle/Vundle.vim/
+    call vundle#begin('$VIM/vimfiles/bundle/')
 endif
 
 " 使用Vundle来管理Vundle，这个必须要有。
-Bundle 'gmarik/vundle'
+Plugin 'Vundle.vim'
 
 " 以下为要安装或更新的插件，不同仓库都有（具体书写规范请参考帮助）
-Bundle 'a.vim'
-Bundle 'Align'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'bufexplorer.zip'
-Bundle 'ccvext.vim'
-Bundle 'cSyntaxAfter'
-Bundle 'Yggdroot/indentLine'
-Bundle 'breestealth/Mark-Karkat'
-Bundle 'Shougo/neocomplcache.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'FromtonRouge/OmniCppComplete'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'repeat.vim'
-Bundle 'msanders/snipmate.vim'
-Bundle 'wesleyche/SrcExpl'
-Bundle 'std_c.zip'
-Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/syntastic'
-Bundle 'majutsushi/tagbar'
-Bundle 'netroby/taglist'
-Bundle 'TxtBrowser'
-Bundle 'ZoomWin'
-Bundle 'xptemplate'
-Bundle 'fatih/vim-go'
-Bundle 'Blackrush/vim-gocode'
-Bundle 'winmanager'
-Bundle 'LargeFile'
-Bundle 'maven-plugin'
-Bundle 'EasyGrep'
-Bundle 'bling/vim-airline'
-Bundle 'mattn/emmet-vim'
-Bundle 'ctrlp.vim'
-Bundle 'SuperTab'
-Bundle 'Zenburn'
-Bundle 'vim-ipython'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Vim-JDE'
+Plugin 'a.vim'
+" Bundle 'Align'
+" Bundle 'jiangmiao/auto-pairs'
+" Bundle 'bufexplorer.zip'
+" Bundle 'ccvext.vim'
+" Bundle 'cSyntaxAfter'
+" Bundle 'Yggdroot/indentLine'
+" Bundle 'Shougo/neocomplcache.vim'
+" Bundle 'scrooloose/nerdcommenter'
+" Bundle 'scrooloose/nerdtree'
+" Bundle 'FromtonRouge/OmniCppComplete'
+" Bundle 'Lokaltog/vim-powerline'
+" Bundle 'repeat.vim'
+" Bundle 'msanders/snipmate.vim'
+" Bundle 'wesleyche/SrcExpl'
+" Bundle 'std_c.zip'
+" Bundle 'tpope/vim-surround'
+" Bundle 'scrooloose/syntastic'
+" Bundle 'majutsushi/tagbar'
+" Bundle 'ZoomWin'
+" Bundle 'xptemplate'
+" Bundle 'winmanager'
+" Bundle 'LargeFile'
+" Bundle 'EasyGrep'
+" Bundle 'bling/vim-airline'
+" Bundle 'mattn/emmet-vim'
+" Bundle 'ctrlp.vim'
+" Bundle 'SuperTab'
+Plugin 'Zenburn'
+" Bundle 'Lokaltog/vim-easymotion'
+" Bundle 'ant_menu.vim'
+" Bundle 'asyncrun.vim'
+
+" 使用Vundle来管理Vundle，这个必须要有。
+" Bundle 'vundle'
+
+" 以下为要安装或更新的插件，不同仓库都有（具体书写规范请参考帮助）
+" Bundle 'a.vim'
+" Bundle 'Align'
+" Bundle 'jiangmiao/auto-pairs'
+" Bundle 'bufexplorer.zip'
+" Bundle 'ccvext.vim'
+" Bundle 'cSyntaxAfter'
+" Bundle 'Yggdroot/indentLine'
+" Bundle 'Shougo/neocomplcache.vim'
+" Bundle 'scrooloose/nerdcommenter'
+" Bundle 'scrooloose/nerdtree'
+" Bundle 'FromtonRouge/OmniCppComplete'
+" Bundle 'Lokaltog/vim-powerline'
+" Bundle 'repeat.vim'
+" Bundle 'msanders/snipmate.vim'
+" Bundle 'wesleyche/SrcExpl'
+" Bundle 'std_c.zip'
+" Bundle 'tpope/vim-surround'
+" Bundle 'scrooloose/syntastic'
+" Bundle 'majutsushi/tagbar'
+" Bundle 'ZoomWin'
+" Bundle 'xptemplate'
+" Bundle 'winmanager'
+" Bundle 'LargeFile'
+" Bundle 'EasyGrep'
+" Bundle 'bling/vim-airline'
+" Bundle 'mattn/emmet-vim'
+" Bundle 'ctrlp.vim'
+" Bundle 'SuperTab'
+" Bundle 'Zenburn'
+" Bundle 'Lokaltog/vim-easymotion'
+" Bundle 'ant_menu.vim'
+" Bundle 'asyncrun.vim'
 
 " -----------------------------------------------------------------------------
 "  < 编码配置 >
@@ -171,7 +202,7 @@ Bundle 'Vim-JDE'
 " 注：使用utf-8格式后，软件与程序源码、文件路径不能有中文，否则报错
 set encoding=utf-8                                    "设置gvim内部编码
 set fileencoding=utf-8                                "设置当前文件编码
-set fileencodings=ucs-bom,utf-8,gbk,cp936,latin-1     "设置支持打开的文件的编码
+set fileencodings=utf-8,gbk,cp936,latin-1             "设置支持打开的文件的编码
 
 " 文件格式，默认 ffs=dos,unix
 set fileformat=unix                                   "设置新文件的<EOL>格式
@@ -483,6 +514,21 @@ set vb t_vb=                                "关闭提示音
 " 所以我就没有加入echofunc插件
 
 " -----------------------------------------------------------------------------
+"  < asyncrun.vim+maven 插件配置 >
+" -----------------------------------------------------------------------------
+" 配置mvn配置运行mvn工程 
+noremap mp : cclose<cr>:copen<cr>:AsyncRun mvn clean package -B -e -U -Dmaven.test.skip=true<cr>
+noremap md : cclose<cr>:copen<cr>:AsyncRun mvn clean deploy -B -e -U-Dmaven.test.skip=true<cr>
+noremap mt : cclose<cr>:copen<cr>:AsyncRun mvn clean test -B -e -U<cr>
+noremap mi : cclose<cr>:copen<cr>:AsyncRun mvn clean install -B -e -U -Dmaven.test.skip=true<cr>
+
+" 启动cmd命令
+noremap cmd : !start cmd<cr>
+
+" 停止任务
+noremap ms : AsyncRun[!]<cr>
+
+" -----------------------------------------------------------------------------
 "  < BufExplorer 插件配置 >
 " -----------------------------------------------------------------------------
 " 快速轻松的在缓存中切换（相当于另一种多个文件间的切换方式）
@@ -638,6 +684,13 @@ let c_cpp_comments = 0
 "  < Syntastic 插件配置 >
 " -----------------------------------------------------------------------------
 " 用于保存文件是查检语法
+"
+" -----------------------------------------------------------------------------
+"  < ant_menu.vim插件配置 >
+" -----------------------------------------------------------------------------
+let g:buildFile = 'build.xml' 
+let g:antOption = '-debug' 
+let g:logFile = 'build.log' 
 
 " -----------------------------------------------------------------------------
 "  < Tagbar 插件配置 >
@@ -647,7 +700,7 @@ let c_cpp_comments = 0
 " nmap tb :TlistClose<cr>:TagbarToggle<cr>
 nmap tb :TagbarToggle<cr>
 
-let g:tagbar_ctags_bin ='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+let g:tagbar_ctags_bin='D:\Program Files\Vim\vim80\ctags.exe'
 let g:tagbar_width=40                       "设置窗口宽度
 let g:tagbar_right=1                         "在左侧窗口中显示
 
@@ -706,19 +759,19 @@ let g:winManagerWidth=40                    "设置窗口宽度
 " -----------------------------------------------------------------------------
 "  < Vim-go 插件映射 >
 " -----------------------------------------------------------------------------
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
+" au FileType go nmap <leader>r <Plug>(go-run)
+" au FileType go nmap <leader>b <Plug>(go-build)
+" au FileType go nmap <leader>t <Plug>(go-test)
+" au FileType go nmap <leader>c <Plug>(go-coverage)
 
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+" au FileType go nmap <Leader>ds <Plug>(go-def-split)
+" au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+" au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+" au FileType go nmap <Leader>gd <Plug>(go-doc)
+" au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 
-au FileType go nmap <Leader>e <Plug>(go-rename)
+" au FileType go nmap <Leader>e <Plug>(go-rename)
 
 " =============================================================================
 "                          << 以下为常用工具配置 >>
@@ -734,7 +787,7 @@ if has("cscope")
     "使支持用 Ctrl+]  和 Ctrl+t 快捷键在代码间跳转
     set cscopetag
     "如果你想反向搜索顺序设置为1
-    set csto=0
+    set csto=1
     "在当前目录中添加任何数据库
     if filereadable("cscope.out")
         cs add cscope.out
@@ -752,6 +805,12 @@ if has("cscope")
     nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
     nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
     nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
+    " 关闭窗口
+    nmap <C-\>q :cclose<CR>
+
+    " 打开窗口
+    nmap <C-\>o :copen<CR>
 endif
 
 " -----------------------------------------------------------------------------
@@ -823,3 +882,4 @@ autocmd! bufwritepost $HOME/.gvimrc source %
 " 注：上面配置中的"<Leader>"在本软件中设置为"\"键（引号里的反斜杠），如<Leader>t
 " 指在常规模式下按"\"键加"t"键，这里不是同时按，而是先按"\"键后按"t"键，间隔在一
 " 秒内，而<Leader>cs是先按"\"键再按"c"又再按"s"键
+
