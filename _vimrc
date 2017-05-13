@@ -127,74 +127,48 @@ Plugin 'Vundle.vim'
 
 " 以下为要安装或更新的插件，不同仓库都有（具体书写规范请参考帮助）
 Plugin 'a.vim'
-" Bundle 'Align'
-" Bundle 'jiangmiao/auto-pairs'
-" Bundle 'bufexplorer.zip'
-" Bundle 'ccvext.vim'
-" Bundle 'cSyntaxAfter'
-" Bundle 'Yggdroot/indentLine'
-" Bundle 'Shougo/neocomplcache.vim'
-" Bundle 'scrooloose/nerdcommenter'
-" Bundle 'scrooloose/nerdtree'
-" Bundle 'FromtonRouge/OmniCppComplete'
-" Bundle 'Lokaltog/vim-powerline'
-" Bundle 'repeat.vim'
-" Bundle 'msanders/snipmate.vim'
-" Bundle 'wesleyche/SrcExpl'
-" Bundle 'std_c.zip'
-" Bundle 'tpope/vim-surround'
-" Bundle 'scrooloose/syntastic'
-" Bundle 'majutsushi/tagbar'
-" Bundle 'ZoomWin'
-" Bundle 'xptemplate'
-" Bundle 'winmanager'
-" Bundle 'LargeFile'
-" Bundle 'EasyGrep'
-" Bundle 'bling/vim-airline'
-" Bundle 'mattn/emmet-vim'
-" Bundle 'ctrlp.vim'
-" Bundle 'SuperTab'
+Plugin 'Align'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'bufexplorer.zip'
+Plugin 'ccvext.vim'
+Plugin 'Yggdroot/indentLine'
+Plugin 'Shougo/neocomplcache.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'msanders/snipmate.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'majutsushi/tagbar'
+Plugin 'xptemplate'
+Plugin 'winmanager'
+Plugin 'EasyGrep'
+Plugin 'bling/vim-airline'
+Plugin 'mattn/emmet-vim'
+Plugin 'ctrlp.vim'
+Plugin 'SuperTab'
+Plugin 'skywind3000/asyncrun.vim'
+
+"  主题插件
 Plugin 'Zenburn'
-" Bundle 'Lokaltog/vim-easymotion'
-" Bundle 'ant_menu.vim'
-" Bundle 'asyncrun.vim'
+Plugin 'morhetz/gruvbox'
 
-" 使用Vundle来管理Vundle，这个必须要有。
-" Bundle 'vundle'
+" markdown 插件
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
-" 以下为要安装或更新的插件，不同仓库都有（具体书写规范请参考帮助）
-" Bundle 'a.vim'
-" Bundle 'Align'
-" Bundle 'jiangmiao/auto-pairs'
-" Bundle 'bufexplorer.zip'
-" Bundle 'ccvext.vim'
-" Bundle 'cSyntaxAfter'
-" Bundle 'Yggdroot/indentLine'
-" Bundle 'Shougo/neocomplcache.vim'
-" Bundle 'scrooloose/nerdcommenter'
-" Bundle 'scrooloose/nerdtree'
-" Bundle 'FromtonRouge/OmniCppComplete'
-" Bundle 'Lokaltog/vim-powerline'
-" Bundle 'repeat.vim'
-" Bundle 'msanders/snipmate.vim'
-" Bundle 'wesleyche/SrcExpl'
-" Bundle 'std_c.zip'
-" Bundle 'tpope/vim-surround'
-" Bundle 'scrooloose/syntastic'
-" Bundle 'majutsushi/tagbar'
-" Bundle 'ZoomWin'
-" Bundle 'xptemplate'
-" Bundle 'winmanager'
-" Bundle 'LargeFile'
-" Bundle 'EasyGrep'
-" Bundle 'bling/vim-airline'
-" Bundle 'mattn/emmet-vim'
-" Bundle 'ctrlp.vim'
-" Bundle 'SuperTab'
-" Bundle 'Zenburn'
-" Bundle 'Lokaltog/vim-easymotion'
-" Bundle 'ant_menu.vim'
-" Bundle 'asyncrun.vim'
+"  其它插件 
+" Plugin 'artur-shaik/vim-javacomplete2'
+" Plugin 'Lokaltog/vim-easymotion'
+" Plugin 'scrooloose/syntastic'
+" Plugin 'FromtonRouge/OmniCppComplete'
+" Plugin 'wesleyche/SrcExpl'
+" Plugin 'cSyntaxAfter'
+" Plugin 'vim-scripts/taglist.vim'
+
+" 加载插件结束，必须要添加
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 
 " -----------------------------------------------------------------------------
 "  < 编码配置 >
@@ -228,12 +202,6 @@ set expandtab                                         "将Tab键转换为空格
 set tabstop=4                                         "设置Tab键的宽度
 set shiftwidth=4                                      "换行时自动缩进4个空格
 set smarttab                                          "指定按一次backspace就删除shiftwidth宽度的空格
-" set foldenable                                        "启用折叠
-" set foldmethod=indent                                 "indent 折叠方式
-" set foldmethod=marker                                "marker 折叠方式
-
-" 用空格键来开关折叠
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 " 当文件在外部被修改，自动更新该文件
 set autoread
@@ -246,7 +214,7 @@ nmap cM :%s/\r$//g<cr>:noh<cr>
 
 set ignorecase                                        "搜索模式里忽略大小写
 set smartcase                                         "如果搜索模式包含大写字符，不使用 'ignorecase' 选项，只有在输入搜索模式并且打开 'ignorecase' 选项时才会使用
-" set noincsearch                                       "在输入要搜索的文字时，取消实时匹配
+set noincsearch                                       "在输入要搜索的文字时，取消实时匹配
 
 " Ctrl + K 插入模式下光标向上移动
 imap <c-k> <Up>
@@ -272,20 +240,20 @@ set cmdheight=2                                       "设置命令行的高度�
 set cursorline                                        "突出显示当前行
 set guifont=Courier\ New:h12                          "设置字体:字号（字体名称空格用下划线代替）
 " set shortmess=atI                                   "去掉欢迎界面
-" au GUIEnter * simalt ~x                             "窗口启动时自动最大化
+au GUIEnter * simalt ~x                               "窗口启动时自动最大化
 winpos 10 10                                          "指定窗口出现的位置，坐标原点在屏幕左上角
 set lines=55 columns=180                              "指定窗口大小，lines为高度，columns为宽度
 
 " 设置代码方案
 if g:isGUI
-    colorscheme zenburn "Gvim配色方案
+    colorscheme gruvbox  "Gvim配色方案
 else
-    colorscheme zenburn "终端配色方案
+    colorscheme gruvbox  "终端配色方案
 endif
 
 " 个性化状栏（这里提供两种方式，要使用其中一种去掉注释即可，不使用反之）
 " let &statusline=' %t %{&mod?(&ro?"*":"+"):(&ro?"=":" ")} %1*|%* %{&ft==""?"any":&ft} %1*|%* %{&ff} %1*|%* %{(&fenc=="")?&enc:&fenc}%{(&bomb?",BOM":"")} %1*|%* %=%1*|%* 0x%B %1*|%* (%l,%c%V) %1*|%* %L %1*|%* %P'
-" set statusline=%t\ %1*%m%*\ %1*%r%*\ %2*%h%*%w%=%l%3*/%L(%p%%)%*,%c%V]\ [%b:0x%B]\ [%{&ft==''?'TEXT':toupper(&ft)},%{toupper(&ff)},%{toupper(&fenc!=''?&fenc:&enc)}%{&bomb?',BOM':''}%{&eol?'':',NOEOL'}]
+set statusline=%t\ %1*%m%*\ %1*%r%*\ %2*%h%*%w%=%l%3*/%L(%p%%)%*,%c%V]\ [%b:0x%B]\ [%{&ft==''?'TEXT':toupper(&ft)},%{toupper(&ff)},%{toupper(&fenc!=''?&fenc:&enc)}%{&bomb?',BOM':''}%{&eol?'':',NOEOL'}]
 
 " 显示/隐藏菜单栏、工具栏、滚动条，可用 Ctrl + F11 切换
 if g:isGUI
@@ -334,153 +302,6 @@ let s:linux_CFlags = 'gcc\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
 let s:windows_CPPFlags = 'g++\ -fexec-charset=gbk\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
 let s:linux_CPPFlags = 'g++\ -Wall\ -g\ -O0\ -c\ %\ -o\ %<.o'
 
-func! Compile()
-    exe ":ccl"
-    exe ":update"
-    if expand("%:e") == "c" || expand("%:e") == "cpp" || expand("%:e") == "cxx"
-        let s:Sou_Error = 0
-        let s:LastShellReturn_C = 0
-        let Sou = expand("%:p")
-        let Obj = expand("%:p:r").s:Obj_Extension
-        let Obj_Name = expand("%:p:t:r").s:Obj_Extension
-        let v:statusmsg = ''
-        if !filereadable(Obj) || (filereadable(Obj) && (getftime(Obj) < getftime(Sou)))
-            redraw!
-            if expand("%:e") == "c"
-                if g:iswindows
-                    exe ":setlocal makeprg=".s:windows_CFlags
-                else
-                    exe ":setlocal makeprg=".s:linux_CFlags
-                endif
-                echohl WarningMsg | echo " compiling..."
-                silent make
-            elseif expand("%:e") == "cpp" || expand("%:e") == "cxx"
-                if g:iswindows
-                    exe ":setlocal makeprg=".s:windows_CPPFlags
-                else
-                    exe ":setlocal makeprg=".s:linux_CPPFlags
-                endif
-                echohl WarningMsg | echo " compiling..."
-                silent make
-            endif
-            redraw!
-            if v:shell_error != 0
-                let s:LastShellReturn_C = v:shell_error
-            endif
-            if g:iswindows
-                if s:LastShellReturn_C != 0
-                    exe ":bo cope"
-                    echohl WarningMsg | echo " compilation failed"
-                else
-                    if s:ShowWarning
-                        exe ":bo cw"
-                    endif
-                    echohl WarningMsg | echo " compilation successful"
-                endif
-            else
-                if empty(v:statusmsg)
-                    echohl WarningMsg | echo " compilation successful"
-                else
-                    exe ":bo cope"
-                endif
-            endif
-        else
-            echohl WarningMsg | echo ""Obj_Name"is up to date"
-        endif
-    else
-        let s:Sou_Error = 1
-        echohl WarningMsg | echo " please choose the correct source file"
-    endif
-    exe ":setlocal makeprg=make"
-endfunc
-
-func! Link()
-    call Compile()
-    if s:Sou_Error || s:LastShellReturn_C != 0
-        return
-    endif
-    let s:LastShellReturn_L = 0
-    let Sou = expand("%:p")
-    let Obj = expand("%:p:r").s:Obj_Extension
-    if g:iswindows
-        let Exe = expand("%:p:r").s:Exe_Extension
-        let Exe_Name = expand("%:p:t:r").s:Exe_Extension
-    else
-        let Exe = expand("%:p:r")
-        let Exe_Name = expand("%:p:t:r")
-    endif
-    let v:statusmsg = ''
-	if filereadable(Obj) && (getftime(Obj) >= getftime(Sou))
-        redraw!
-        if !executable(Exe) || (executable(Exe) && getftime(Exe) < getftime(Obj))
-            if expand("%:e") == "c"
-                setlocal makeprg=gcc\ -o\ %<\ %<.o
-                echohl WarningMsg | echo " linking..."
-                silent make
-            elseif expand("%:e") == "cpp" || expand("%:e") == "cxx"
-                setlocal makeprg=g++\ -o\ %<\ %<.o
-                echohl WarningMsg | echo " linking..."
-                silent make
-            endif
-            redraw!
-            if v:shell_error != 0
-                let s:LastShellReturn_L = v:shell_error
-            endif
-            if g:iswindows
-                if s:LastShellReturn_L != 0
-                    exe ":bo cope"
-                    echohl WarningMsg | echo " linking failed"
-                else
-                    if s:ShowWarning
-                        exe ":bo cw"
-                    endif
-                    echohl WarningMsg | echo " linking successful"
-                endif
-            else
-                if empty(v:statusmsg)
-                    echohl WarningMsg | echo " linking successful"
-                else
-                    exe ":bo cope"
-                endif
-            endif
-        else
-            echohl WarningMsg | echo ""Exe_Name"is up to date"
-        endif
-    endif
-    setlocal makeprg=make
-endfunc
-
-func! Run()
-    let s:ShowWarning = 0
-    call Link()
-    let s:ShowWarning = 1
-    if s:Sou_Error || s:LastShellReturn_C != 0 || s:LastShellReturn_L != 0
-        return
-    endif
-    let Sou = expand("%:p")
-    let Obj = expand("%:p:r").s:Obj_Extension
-    if g:iswindows
-        let Exe = expand("%:p:r").s:Exe_Extension
-    else
-        let Exe = expand("%:p:r")
-    endif
-    if executable(Exe) && getftime(Exe) >= getftime(Obj) && getftime(Obj) >= getftime(Sou)
-        redraw!
-        echohl WarningMsg | echo " running..."
-        if g:iswindows
-            exe ":!%<.exe"
-        else
-            if g:isGUI
-                exe ":!gnome-terminal -e ./%<"
-            else
-                exe ":!./%<"
-            endif
-        endif
-        redraw!
-        echohl WarningMsg | echo " running finish"
-    endif
-endfunc
-
 " -----------------------------------------------------------------------------
 "  < 其它配置 >
 " -----------------------------------------------------------------------------
@@ -521,6 +342,7 @@ noremap mp : cclose<cr>:copen<cr>:AsyncRun mvn clean package -B -e -U -Dmaven.te
 noremap md : cclose<cr>:copen<cr>:AsyncRun mvn clean deploy -B -e -U-Dmaven.test.skip=true<cr>
 noremap mt : cclose<cr>:copen<cr>:AsyncRun mvn clean test -B -e -U<cr>
 noremap mi : cclose<cr>:copen<cr>:AsyncRun mvn clean install -B -e -U -Dmaven.test.skip=true<cr>
+noremap mc : cclose<cr>:copen<cr>:AsyncRun mvn clean compile<cr>
 
 " 启动cmd命令
 noremap cmd : !start cmd<cr>
@@ -583,7 +405,7 @@ let g:indentLine_color_gui = '#A4E57E'
 " " 快速浏览和操作Buffer
 " " 主要用于同时打开多个文件并相与切换
 
-" " let g:miniBufExplMapWindowNavArrows = 1     "用Ctrl加方向键切换到上下左右的窗口中去
+" let g:miniBufExplMapWindowNavArrows = 1     "用Ctrl加方向键切换到上下左右的窗口中去
 " let g:miniBufExplMapWindowNavVim = 1        "用<C-k,j,h,l>切换到上下左右的窗口中去
 " let g:miniBufExplMapCTabSwitchBufs = 1      "功能增强（不过好像只有在Windows中才有用）
 " "                                            <C-Tab> 向前循环切换到每个buffer上,并在但前窗口打开
@@ -600,7 +422,7 @@ noremap <c-l> <c-w>l
 " -----------------------------------------------------------------------------
 " 关键字补全、文件路径补全、tag补全等等，各种，非常好用，速度超快。
 let g:neocomplcache_enable_at_startup = 1     "vim 启动时启用插件
-" let g:neocomplcache_disable_auto_complete = 1 "不自动弹出补全列表
+let g:neocomplcache_disable_auto_complete = 0 "不自动弹出补全列表
 " 在弹出补全列表后用 <c-p> 或 <c-n> 进行上下选择效果比较好
 
 " -----------------------------------------------------------------------------
@@ -620,8 +442,6 @@ let NERDSpaceDelims = 1                     "在左注释符之后，右注释�
 "  < nerdtree 插件配置 >
 " -----------------------------------------------------------------------------
 " 有目录村结构的文件浏览插件
-
-" 常规模式下输入 F2 调用插件
 nmap nt :NERDTreeToggle<CR>
 
 " -----------------------------------------------------------------------------
@@ -684,23 +504,16 @@ let c_cpp_comments = 0
 "  < Syntastic 插件配置 >
 " -----------------------------------------------------------------------------
 " 用于保存文件是查检语法
-"
-" -----------------------------------------------------------------------------
-"  < ant_menu.vim插件配置 >
-" -----------------------------------------------------------------------------
-let g:buildFile = 'build.xml' 
-let g:antOption = '-debug' 
-let g:logFile = 'build.log' 
 
 " -----------------------------------------------------------------------------
 "  < Tagbar 插件配置 >
 " -----------------------------------------------------------------------------
 " 相对 TagList 能更好的支持面向对象
 " 常规模式下输入 tb 调用插件，如果有打开 TagList 窗口则先将其关闭
-" nmap tb :TlistClose<cr>:TagbarToggle<cr>
+nmap tb :TlistClose<cr>:TagbarToggle<cr>
 nmap tb :TagbarToggle<cr>
 
-let g:tagbar_ctags_bin='D:\Program Files\Vim\vim80\ctags.exe'
+let g:tagbar_ctags_bin='D:\Program Files (x86)\Vim\vim80\ctags.exe'
 let g:tagbar_width=40                       "设置窗口宽度
 let g:tagbar_right=1                         "在左侧窗口中显示
 
@@ -755,23 +568,6 @@ let g:winManagerWidth=40                    "设置窗口宽度
 " -----------------------------------------------------------------------------
 " 用于分割窗口的最大化与还原
 " 快捷键 <c-w>o 在最大化与还原间切换
-"
-" -----------------------------------------------------------------------------
-"  < Vim-go 插件映射 >
-" -----------------------------------------------------------------------------
-" au FileType go nmap <leader>r <Plug>(go-run)
-" au FileType go nmap <leader>b <Plug>(go-build)
-" au FileType go nmap <leader>t <Plug>(go-test)
-" au FileType go nmap <leader>c <Plug>(go-coverage)
-
-" au FileType go nmap <Leader>ds <Plug>(go-def-split)
-" au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-" au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-
-" au FileType go nmap <Leader>gd <Plug>(go-doc)
-" au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-
-" au FileType go nmap <Leader>e <Plug>(go-rename)
 
 " =============================================================================
 "                          << 以下为常用工具配置 >>
@@ -872,8 +668,10 @@ endif
 " 自动切换目录为当前编辑文件所在目录
 au BufRead,BufNewFile,BufEnter * cd %:p:h
 
+
 " 配置自动生效
 autocmd! bufwritepost $HOME/.gvimrc source %
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " =============================================================================
 "                          << 其它 >>
